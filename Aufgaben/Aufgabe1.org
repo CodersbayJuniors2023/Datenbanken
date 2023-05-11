@@ -1,0 +1,34 @@
+#+LATEX_HEADER: \input{org-template.tex}
+#+TITLE: Aufgabe 1: Wiederholung und Kompetenzcheck
+#+AUTHOR: Lukas Wais
+#+Language: de
+#+OPTIONS: num:nil date:today toc:nil
+
+* Schreibe folgende SQL Abfragen
+
+1. Liste alle Länder auf
+2. Gib die Kontinente und deren Ländern aus
+3. Ermittle die Gesamtanzahl der Länder in jedem Kontinent
+4. Selektiere alle Länder in denen Englisch gesprochen wird
+5. Finde die Länder mit der höchsten Bevölkerungszahl
+6. Gib die Länder aus welche eine Bevölkerungszahl von über 100 Millionen haben
+7. Finde die Regionen mit mehr als 12 Ländern
+8. Selektiere Namen und die Fläche der Länder und sortiere die Ausgabe bei Namen
+9. Finde alle Regionen mit mehr als 13 Ländern und deren totale Fläche größer
+   ist als 1.000.000 km²
+10. Berechne Gesamtfläche der Länder pro Region. Verwende ~sum()~ und ~group by~.
+11. Selektiere die Länder ID und den Ländernamen von der countries Tabelle.
+    Limitiere die Ausgabe auf 50 Einträge und sortiere sie absteigend.
+12. Selektiere die Population vom Land Portugal.
+13. Definiere einen Inner Join mit Ländern und Regionen.
+    Verwende die ~using~ Klausel.
+14. Wie viele Länder sind zwischen 1980 und 1996 unabhängig geworden?
+15. Welche offizielle Sprache wird in Kuba gesprochen? Die ID ist ausreichend.
+16. Selektiere alles von den Vips und sortiere die Ausgabe nach Namen aufsteigend.
+17. Selektiere alles von den Vips und sortiere die Ausgabe nach Namen absteigend.
+18. Auf welchem Kontinent liegt Mexico?
+19. Welchen Namen hat der Staat mit der ID 18?
+20. Füge eine Abfrage in unser Dokument ein. Sie darf nicht von dieser Aufgabe stammen.
+
+
+
