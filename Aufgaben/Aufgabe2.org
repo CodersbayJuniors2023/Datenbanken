@@ -30,6 +30,26 @@ PATIENT(patno,patname,gpno,gpname,appdate,consultant,conaddr,sample)
 Gib bei den folgenden Tabellen an, ob sie in /keiner/, der /1NF/, /2NF/ oder der /3NF/ sind. 
 Begründe deine Antwort.
 
+Die Notation $x$ \rarr y zeigt eine funktionale Abhängigkeit an und besagt, dass die Spalte $x$ die Werte der Spalte $y$ bestimmt.
+Beispiel:
+
+| x   | y         |
+|-----|-----------|
+| 001 | John Doe  |
+| 002 | Jane Smith|
+| 003 | Alice Lee |
+
+Für $x=001$ ist $y=John~Doe \ldots$.
+
+Die Tabelle A(x, y, (b, c)) besteht aus den Spalten x, y und dem Tupel (b, c).
+Beispiel:
+| x   | y          | (b, c)  |
+|-----|------------|---------|
+| 001 | John Doe   | (A, 5)  |
+| 002 | Jane Smith | (B, 3)  |
+| 003 | Alice Lee  | (C, 7)  |
+
+
 - =EMPLOYEE(empno,empname,jobcode)=
     - empno \rarr empname
     - empno \rarr jobcode

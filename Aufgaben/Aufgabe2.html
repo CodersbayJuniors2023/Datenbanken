@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
 <head>
-<!-- 2023-05-25 Thu 15:40 -->
+<!-- 2023-05-25 Thu 16:55 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Aufgabe 2: Normalisierungen</title>
@@ -219,26 +219,26 @@
 <div id="content" class="content">
 <h1 class="title">Aufgabe 2: Normalisierungen</h1>
 
-<div id="outline-container-org3d2a45b" class="outline-2">
-<h2 id="org3d2a45b">Schlüssel</h2>
-<div class="outline-text-2" id="text-org3d2a45b">
+<div id="outline-container-org6c5e97f" class="outline-2">
+<h2 id="org6c5e97f">Schlüssel</h2>
+<div class="outline-text-2" id="text-org6c5e97f">
 <p>
 Welche drei Schlüsselarten gibt es. Finde zu jedem ein geeignetes Beispiel.
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0c20369" class="outline-2">
-<h2 id="org0c20369">Normalisierungen</h2>
-<div class="outline-text-2" id="text-org0c20369">
+<div id="outline-container-org3e1fe2a" class="outline-2">
+<h2 id="org3e1fe2a">Normalisierungen</h2>
+<div class="outline-text-2" id="text-org3e1fe2a">
 <p>
 In den folgenden Aufgaben geht es um Normalisierungen.
 </p>
 </div>
 
-<div id="outline-container-org8b6e724" class="outline-3">
-<h3 id="org8b6e724">Patienten</h3>
-<div class="outline-text-3" id="text-org8b6e724">
+<div id="outline-container-orgdf908fb" class="outline-3">
+<h3 id="orgdf908fb">Patienten</h3>
+<div class="outline-text-3" id="text-orgdf908fb">
 <p>
 Bringe die unten stehende Tabelle in die dritte Normalform (3NF). Schreibe alle Schritte auf.
 </p>
@@ -343,13 +343,97 @@ PATIENT(patno,patname,gpno,gpname,appdate,consultant,conaddr,sample)
 </div>
 </div>
 
-<div id="outline-container-orgc228231" class="outline-3">
-<h3 id="orgc228231">NF erkennen</h3>
-<div class="outline-text-3" id="text-orgc228231">
+<div id="outline-container-orga617507" class="outline-3">
+<h3 id="orga617507">NF erkennen</h3>
+<div class="outline-text-3" id="text-orga617507">
 <p>
 Gib bei den folgenden Tabellen an, ob sie in <i>keiner</i>, der <i>1NF</i>, <i>2NF</i> oder der <i>3NF</i> sind. 
 Begründe deine Antwort.
 </p>
+
+<p>
+Die Notation \(x\) &rarr; y zeigt eine funktionale Abhängigkeit an und besagt, dass die Spalte \(x\) die Werte der Spalte \(y\) bestimmt.
+Beispiel:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">x</th>
+<th scope="col" class="org-left">y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">001</td>
+<td class="org-left">John Doe</td>
+</tr>
+
+<tr>
+<td class="org-right">002</td>
+<td class="org-left">Jane Smith</td>
+</tr>
+
+<tr>
+<td class="org-right">003</td>
+<td class="org-left">Alice Lee</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Für \(x=001\) ist \(y=John~Doe \ldots\).
+</p>
+
+<p>
+Die Tabelle A(x, y, (b, c)) besteht aus den Spalten x, y und dem Tupel (b, c).
+Beispiel:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">x</th>
+<th scope="col" class="org-left">y</th>
+<th scope="col" class="org-left">(b, c)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">001</td>
+<td class="org-left">John Doe</td>
+<td class="org-left">(A, 5)</td>
+</tr>
+
+<tr>
+<td class="org-right">002</td>
+<td class="org-left">Jane Smith</td>
+<td class="org-left">(B, 3)</td>
+</tr>
+
+<tr>
+<td class="org-right">003</td>
+<td class="org-left">Alice Lee</td>
+<td class="org-left">(C, 7)</td>
+</tr>
+</tbody>
+</table>
+
 
 <ul class="org-ul">
 <li><code>EMPLOYEE(empno,empname,jobcode)</code>
@@ -376,9 +460,9 @@ Begründe deine Antwort.
 </div>
 </div>
 
-<div id="outline-container-orgddd4780" class="outline-3">
-<h3 id="orgddd4780">Mitarbeiter</h3>
-<div class="outline-text-3" id="text-orgddd4780">
+<div id="outline-container-org086f7d7" class="outline-3">
+<h3 id="org086f7d7">Mitarbeiter</h3>
+<div class="outline-text-3" id="text-org086f7d7">
 <p>
 Überführe die unten stehende Tabelle in die 3NF. Annahmen: \(n:m\) Beziehung zwischen Mitarbeitern und Aufträgen; 
 Pro Abteilung gibt es ein Faxgerät. Benenne auch die jeweils vorhandenen Schlüssel. Begründe, warum die jeweilige NF
@@ -443,9 +527,9 @@ verletzt ist.
 </div>
 </div>
 
-<div id="outline-container-org5937c6f" class="outline-3">
-<h3 id="org5937c6f">Bücher</h3>
-<div class="outline-text-3" id="text-org5937c6f">
+<div id="outline-container-org3322dfd" class="outline-3">
+<h3 id="org3322dfd">Bücher</h3>
+<div class="outline-text-3" id="text-org3322dfd">
 <p>
 Bringe die Tabelle in die 3NF.
 Für dieses Beispiel nehmen wir an, dass ein Buch von einem Autor geschrieben wird.
@@ -523,9 +607,9 @@ Für dieses Beispiel nehmen wir an, dass ein Buch von einem Autor geschrieben wi
 </div>
 </div>
 
-<div id="outline-container-org18fc210" class="outline-3">
-<h3 id="org18fc210">Weitere Normalformen</h3>
-<div class="outline-text-3" id="text-org18fc210">
+<div id="outline-container-orgf36ccd4" class="outline-3">
+<h3 id="orgf36ccd4">Weitere Normalformen</h3>
+<div class="outline-text-3" id="text-orgf36ccd4">
 <p>
 Gibt es mehr als die 3NF? Falls ja, benenne sie und gib eine kurze Erklärung dazu.
 </p>
@@ -533,9 +617,9 @@ Gibt es mehr als die 3NF? Falls ja, benenne sie und gib eine kurze Erklärung da
 </div>
 </div>
 
-<div id="outline-container-org7a53454" class="outline-2">
-<h2 id="org7a53454">Merkhilfe für die Normalformen</h2>
-<div class="outline-text-2" id="text-org7a53454">
+<div id="outline-container-orgffb8e55" class="outline-2">
+<h2 id="orgffb8e55">Merkhilfe für die Normalformen</h2>
+<div class="outline-text-2" id="text-orgffb8e55">
 <ol class="org-ol">
 <li>Normalform (1NF) Alle Attribute sind atomar.</li>
 <li>Normalform (2NF) Die Relation befindet sich in 1NF und alle Nichtschlüsselattribute sind voll funktional abhängig vom Primärschlüssel.</li>
@@ -546,7 +630,7 @@ Gibt es mehr als die 3NF? Falls ja, benenne sie und gib eine kurze Erklärung da
 </div>
 <div id="postamble" class="status">
 <p class="author">Autor: Lukas Wais</p>
-<p class="date">Created: 2023-05-25 Thu 15:40</p>
+<p class="date">Created: 2023-05-25 Thu 16:55</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
