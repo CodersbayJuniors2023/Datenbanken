@@ -22,24 +22,24 @@ Bringe die unten stehende Tabelle in die dritte Normalform (3NF). Schreibe alle 
 
 Eine textuelle Lösung wird auch akzeptiert:
 
-~~~
+#+BEGIN_SRC
 PATIENT(patno,patname,gpno,gpname,appdate,consultant,conaddr,sample)
-~~~
+#+END_SRC
 
 ** NF erkennen
 Gib bei den den folgenden Tabellen an ob sie in /keiner/, der /1NF/, /2NF/ oder der /3NF/ sind. 
 Begründe deine Antwort.
 
-- ~EMPLOYEE(empno,empname,jobcode)~
+- =EMPLOYEE(empno,empname,jobcode)=
     - empno \rarr empname
     - empno \rarr jobcode
-- ~EMPLOYEE(empno,empname,(jobcode,years))~
+- =EMPLOYEE(empno,empname,(jobcode,years))=
     - empno \rarr empname
     - empno,jobcode \rarr years
-- ~EMPLOYEE(empno,empname,jobcode,jobdesc)~
+- =EMPLOYEE(empno,empname,jobcode,jobdesc)=
     - empno \rarr empname,jobcode
     - jobcode \rarr jobdesc
-- ~EMPLOYEE(empno,empname,project,hoursworked)~
+- =EMPLOYEE(empno,empname,project,hoursworked)=
     - empno \rarr empname
     - empno,project \rarr hoursworked
 
