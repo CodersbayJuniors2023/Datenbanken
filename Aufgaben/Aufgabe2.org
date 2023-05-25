@@ -27,7 +27,7 @@ PATIENT(patno,patname,gpno,gpname,appdate,consultant,conaddr,sample)
 #+END_SRC
 
 ** NF erkennen
-Gib bei den den folgenden Tabellen an ob sie in /keiner/, der /1NF/, /2NF/ oder der /3NF/ sind. 
+Gib bei den folgenden Tabellen an, ob sie in /keiner/, der /1NF/, /2NF/ oder der /3NF/ sind. 
 Begründe deine Antwort.
 
 - =EMPLOYEE(empno,empname,jobcode)=
@@ -45,7 +45,7 @@ Begründe deine Antwort.
 
 ** Mitarbeiter
 Überführe die unten stehende Tabelle in die 3NF. Annahmen: $n:m$ Beziehung zwischen Mitarbeitern und Aufträgen; 
-Pro Abteilung gibt es ein Faxgerät.) Benenne auch die jeweils vorhandenen Schlüssel. Begründe warum die jeweilige NF
+Pro Abteilung gibt es ein Faxgerät. Benenne auch die jeweils vorhandenen Schlüssel. Begründe, warum die jeweilige NF
 verletzt ist.
 
 | ID     | Name    | Vorname | Abteilung | Fax  | Aufträge    |
@@ -63,9 +63,11 @@ Für dieses Beispiel nehmen wir an, dass ein Buch von einem Autor geschrieben wi
 | 1590593324 | Beginning MySQL Database Design and Optimization | Chad Russell   | American           | Hardcover | 49.99 | MySQL; Database; Design| 520   | Thick     | Apress    | USA               | E-book            | 1        | Tutorial   |
 
 ** Weitere Normalformen
-Gibt es mehr als die 3NF? Falls ja bennene sie und gib eine kurze Erklärung dazu.
+Gibt es mehr als die 3NF? Falls ja, benenne sie und gib eine kurze Erklärung dazu.
 
 * Merkhilfe für die Normalformen
 1. Normalform (1NF) Alle Attribute sind atomar.
-2. Normalform (2NF) Die Relation befindet sich in 1NF und alle Nichtschlüsselattribute sind voll funktional abhängig vom Primärschlussel.
+2. Normalform (2NF) Die Relation befindet sich in 1NF und alle Nichtschlüsselattribute sind voll funktional abhängig vom Primärschlüssel.
 3. Normalform (3NF) Die Relation befindet sich in 2NF und Nichtschlüsselattribut ist transitiv vom Primärschlüssel abhängig.
+
+
