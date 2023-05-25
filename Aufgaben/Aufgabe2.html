@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de">
+<head>
+<!-- 2023-05-25 Thu 15:40 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aufgabe 2: Normalisierungen</title>
+<meta name="author" content="Lukas Wais" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Aufgabe 2: Normalisierungen</h1>
+
+<div id="outline-container-org3d2a45b" class="outline-2">
+<h2 id="org3d2a45b">Schlüssel</h2>
+<div class="outline-text-2" id="text-org3d2a45b">
+<p>
+Welche drei Schlüsselarten gibt es. Finde zu jedem ein geeignetes Beispiel.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0c20369" class="outline-2">
+<h2 id="org0c20369">Normalisierungen</h2>
+<div class="outline-text-2" id="text-org0c20369">
+<p>
+In den folgenden Aufgaben geht es um Normalisierungen.
+</p>
+</div>
+
+<div id="outline-container-org8b6e724" class="outline-3">
+<h3 id="org8b6e724">Patienten</h3>
+<div class="outline-text-3" id="text-org8b6e724">
+<p>
+Bringe die unten stehende Tabelle in die dritte Normalform (3NF). Schreibe alle Schritte auf.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">patno</th>
+<th scope="col" class="org-left">patname</th>
+<th scope="col" class="org-right">gpno</th>
+<th scope="col" class="org-left">gpname</th>
+<th scope="col" class="org-left">appdate</th>
+<th scope="col" class="org-left">consultant</th>
+<th scope="col" class="org-left">conaddr</th>
+<th scope="col" class="org-left">sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">01027</td>
+<td class="org-left">Grist</td>
+<td class="org-right">919</td>
+<td class="org-left">Robinson</td>
+<td class="org-left">3/9/2004; 20/12/2004; 10/10/2004</td>
+<td class="org-left">Farnes; Farnes; Edwards</td>
+<td class="org-left">Acadia Rd; Acadia Rd; Beech Ave</td>
+<td class="org-left">blood; none; urine</td>
+</tr>
+
+<tr>
+<td class="org-right">08023</td>
+<td class="org-left">Daniels</td>
+<td class="org-right">818</td>
+<td class="org-left">Seymour</td>
+<td class="org-left">3/9/2004; 3/9/2004</td>
+<td class="org-left">Farnes; Russ</td>
+<td class="org-left">Acadia Rd; Fir St</td>
+<td class="org-left">none; sputum</td>
+</tr>
+
+<tr>
+<td class="org-right">191146</td>
+<td class="org-left">Falken</td>
+<td class="org-right">7171</td>
+<td class="org-left">Ibbotson</td>
+<td class="org-left">3/9/2004</td>
+<td class="org-left">Russ</td>
+<td class="org-left">Fir St</td>
+<td class="org-left">blood</td>
+</tr>
+
+<tr>
+<td class="org-right">001239</td>
+<td class="org-left">Burgess</td>
+<td class="org-right">818</td>
+<td class="org-left">Seymour</td>
+<td class="org-left">5/6/2004</td>
+<td class="org-left">Russ</td>
+<td class="org-left">Fir St</td>
+<td class="org-left">sputum</td>
+</tr>
+
+<tr>
+<td class="org-right">007249</td>
+<td class="org-left">Lynch</td>
+<td class="org-right">7171</td>
+<td class="org-left">Ibbotson</td>
+<td class="org-left">9/11/2004</td>
+<td class="org-left">Edwards</td>
+<td class="org-left">Beach Ave</td>
+<td class="org-left">none</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+Eine textuelle Lösung wird auch akzeptiert:
+</p>
+
+<pre class="example">
+PATIENT(patno,patname,gpno,gpname,appdate,consultant,conaddr,sample)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgc228231" class="outline-3">
+<h3 id="orgc228231">NF erkennen</h3>
+<div class="outline-text-3" id="text-orgc228231">
+<p>
+Gib bei den folgenden Tabellen an, ob sie in <i>keiner</i>, der <i>1NF</i>, <i>2NF</i> oder der <i>3NF</i> sind. 
+Begründe deine Antwort.
+</p>
+
+<ul class="org-ul">
+<li><code>EMPLOYEE(empno,empname,jobcode)</code>
+<ul class="org-ul">
+<li>empno &rarr; empname</li>
+<li>empno &rarr; jobcode</li>
+</ul></li>
+<li><code>EMPLOYEE(empno,empname,(jobcode,years))</code>
+<ul class="org-ul">
+<li>empno &rarr; empname</li>
+<li>empno,jobcode &rarr; years</li>
+</ul></li>
+<li><code>EMPLOYEE(empno,empname,jobcode,jobdesc)</code>
+<ul class="org-ul">
+<li>empno &rarr; empname,jobcode</li>
+<li>jobcode &rarr; jobdesc</li>
+</ul></li>
+<li><code>EMPLOYEE(empno,empname,project,hoursworked)</code>
+<ul class="org-ul">
+<li>empno &rarr; empname</li>
+<li>empno,project &rarr; hoursworked</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgddd4780" class="outline-3">
+<h3 id="orgddd4780">Mitarbeiter</h3>
+<div class="outline-text-3" id="text-orgddd4780">
+<p>
+Überführe die unten stehende Tabelle in die 3NF. Annahmen: \(n:m\) Beziehung zwischen Mitarbeitern und Aufträgen; 
+Pro Abteilung gibt es ein Faxgerät. Benenne auch die jeweils vorhandenen Schlüssel. Begründe, warum die jeweilige NF
+verletzt ist.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">ID</th>
+<th scope="col" class="org-left">Name</th>
+<th scope="col" class="org-left">Vorname</th>
+<th scope="col" class="org-left">Abteilung</th>
+<th scope="col" class="org-right">Fax</th>
+<th scope="col" class="org-left">Aufträge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">123456</td>
+<td class="org-left">Müller</td>
+<td class="org-left">Martin</td>
+<td class="org-left">A01</td>
+<td class="org-right">3765</td>
+<td class="org-left">1255, 7543</td>
+</tr>
+
+<tr>
+<td class="org-right">387645</td>
+<td class="org-left">Schmidt</td>
+<td class="org-left">Jana</td>
+<td class="org-left">A03</td>
+<td class="org-right">8865</td>
+<td class="org-left">8966</td>
+</tr>
+
+<tr>
+<td class="org-right">723999</td>
+<td class="org-left">Schulze</td>
+<td class="org-left">Stephan</td>
+<td class="org-left">A01</td>
+<td class="org-right">3765</td>
+<td class="org-left">3378, 1255</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org5937c6f" class="outline-3">
+<h3 id="org5937c6f">Bücher</h3>
+<div class="outline-text-3" id="text-org5937c6f">
+<p>
+Bringe die Tabelle in die 3NF.
+Für dieses Beispiel nehmen wir an, dass ein Buch von einem Autor geschrieben wird.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">ISBN</th>
+<th scope="col" class="org-left">Title</th>
+<th scope="col" class="org-left">Author</th>
+<th scope="col" class="org-left">Author Nationality</th>
+<th scope="col" class="org-left">Format</th>
+<th scope="col" class="org-right">Price</th>
+<th scope="col" class="org-left">Subject</th>
+<th scope="col" class="org-right">Pages</th>
+<th scope="col" class="org-left">Thickness</th>
+<th scope="col" class="org-left">Publisher</th>
+<th scope="col" class="org-left">Publisher Country</th>
+<th scope="col" class="org-left">Publication Type</th>
+<th scope="col" class="org-right">Genre ID</th>
+<th scope="col" class="org-left">Genre Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1590593324</td>
+<td class="org-left">Beginning MySQL Database Design and Optimization</td>
+<td class="org-left">Chad Russell</td>
+<td class="org-left">American</td>
+<td class="org-left">Hardcover</td>
+<td class="org-right">49.99</td>
+<td class="org-left">MySQL; Database; Design</td>
+<td class="org-right">520</td>
+<td class="org-left">Thick</td>
+<td class="org-left">Apress</td>
+<td class="org-left">USA</td>
+<td class="org-left">E-book</td>
+<td class="org-right">1</td>
+<td class="org-left">Tutorial</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org18fc210" class="outline-3">
+<h3 id="org18fc210">Weitere Normalformen</h3>
+<div class="outline-text-3" id="text-org18fc210">
+<p>
+Gibt es mehr als die 3NF? Falls ja, benenne sie und gib eine kurze Erklärung dazu.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7a53454" class="outline-2">
+<h2 id="org7a53454">Merkhilfe für die Normalformen</h2>
+<div class="outline-text-2" id="text-org7a53454">
+<ol class="org-ol">
+<li>Normalform (1NF) Alle Attribute sind atomar.</li>
+<li>Normalform (2NF) Die Relation befindet sich in 1NF und alle Nichtschlüsselattribute sind voll funktional abhängig vom Primärschlüssel.</li>
+<li>Normalform (3NF) Die Relation befindet sich in 2NF und Nichtschlüsselattribut ist transitiv vom Primärschlüssel abhängig.</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Autor: Lukas Wais</p>
+<p class="date">Created: 2023-05-25 Thu 15:40</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
