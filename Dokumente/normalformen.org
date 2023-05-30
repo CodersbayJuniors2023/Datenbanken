@@ -5,7 +5,7 @@
 
 Angenommen, wir haben eine Tabelle mit dem Namen Kundenbestellungen:
 
-| **Kundennummer**           | Kunde | Produkt | Produktkategorie | Produktbeschreibung |
+| *Kundennummer*           | Kunde | Produkt | Produktkategorie | Produktbeschreibung |
 |------------------------------+-------+---------+-----------------+--------------------|
 
 Diese Tabelle befindet sich in der 1. Normalform (1NF), da jedes Feld
@@ -18,17 +18,17 @@ dass die Spalten Produktkategorie und Produktbeschreibung vom Primärschlüssel 
 
 Tabelle Kunden
 
-| **Kundennummer**              | Kunde |
+| *Kundennummer*              | Kunde |
 |-------------------------------+-------|
 
 
 Tabelle Bestellungen
-| **/Kundennummer/**       | **Produkt** |
+| */Kundennummer/*       | **Produkt** |
 |------------------------------+---------|
 
 
 Tabelle Produkte
-| **Produkt** | Produktkategorie | Produktbeschreibung |
+| *Produkt* | Produktkategorie | Produktbeschreibung |
 |---------+-----------------+--------------------|
 
 
@@ -37,20 +37,20 @@ Ausgehend von der 2.NF müssen wir sicherstellen, dass keine Transitivitäten zw
 Produkt, Produktkategorie und Produktbeschreibung in der Tabelle Produkte auftreten.
 
 Tabelle Kunden
-| **Kundennummer**              | Kunde |
+| *Kundennummer*              | Kunde |
 |-------------------------------+-------|
 
 Tabelle Bestellungen
-| **/Kundennummer/**       | **Produkt** |
+| */Kundennummer/*       | **Produkt** |
 |------------------------------+---------|
 
 Tabelle Produkte
-| **Produkt**             | Produktkategorie |
+| *Produkt*             | Produktkategorie |
 |--------------------------+-----------------|
 
 Tabelle Produktbeschreibungen
 
-| **/Produkt/**           | Produktbeschreibung |
+| */Produkt/*           | Produktbeschreibung |
 |--------------------------+--------------------|
 
 
