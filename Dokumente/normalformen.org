@@ -23,7 +23,7 @@ Tabelle Kunden
 
 
 Tabelle Bestellungen
-| */Kundennummer/*       | **Produkt** |
+| */Kundennummer/*       | *Produkt* |
 |------------------------------+---------|
 
 
@@ -41,7 +41,7 @@ Tabelle Kunden
 |-------------------------------+-------|
 
 Tabelle Bestellungen
-| */Kundennummer/*       | **Produkt** |
+| */Kundennummer/*       | *Produkt* |
 |------------------------------+---------|
 
 Tabelle Produkte
