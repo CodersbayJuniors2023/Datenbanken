@@ -1,0 +1,58 @@
+#+TITLE: Beispiel Normalformen.
+#+AUTHOR: Lukas Wais
+#+Language: de
+#+OPTIONS: num:nil date:today toc:nil
+
+Angenommen, wir haben eine Tabelle mit dem Namen Kundenbestellungen:
+
+| **Kundennummer**           | Kunde | Produkt | Produktkategorie | Produktbeschreibung |
+|------------------------------+-------+---------+-----------------+--------------------|
+
+Diese Tabelle befindet sich in der 1. Normalform (1NF), da jedes Feld
+atomar ist und nur einen Wert enthält. Jedoch haben wir Redundanz in den Spalten Produktkategorie und
+Produktbeschreibung, da diese Informationen potenziell für mehrere Zeilen dupliziert werden.
+
+Um diese Tabelle in die 2. Normalform (2NF) zu überführen, müssen wir sicherstellen, dass jedes
+Nicht-Schlüssel-Attribut voll funktional vom gesamten Schlüssel abhängt. In diesem Fall bedeutet das,
+dass die Spalten Produktkategorie und Produktbeschreibung vom Primärschlüssel Kundennummer abhängen.
+
+Tabelle Kunden
+
+| **Kundennummer**              | Kunde |
+|-------------------------------+-------|
+
+
+Tabelle Bestellungen
+| **/Kundennummer/**       | **Produkt** |
+|------------------------------+---------|
+
+
+Tabelle Produkte
+| **Produkt** | Produktkategorie | Produktbeschreibung |
+|---------+-----------------+--------------------|
+
+
+In der 3. Normalform (3NF) dürfen keine Nicht-Schlüssel-Attribute voneinander abhängen sein.
+Ausgehend von der 2.NF müssen wir sicherstellen, dass keine Transitivitäten zwischen den Attributen
+Produkt, Produktkategorie und Produktbeschreibung in der Tabelle Produkte auftreten.
+
+Tabelle Kunden
+| **Kundennummer**              | Kunde |
+|-------------------------------+-------|
+
+Tabelle Bestellungen
+| **/Kundennummer/**       | **Produkt** |
+|------------------------------+---------|
+
+Tabelle Produkte
+| **Produkt**             | Produktkategorie |
+|--------------------------+-----------------|
+
+Tabelle Produktbeschreibungen
+
+| **/Produkt/**           | Produktbeschreibung |
+|--------------------------+--------------------|
+
+
+In diesem Schritt haben wir die Tabelle Produkte weiter in zwei separate Tabellen aufgeteilt.
+Die Tabelle Produkte enthält nun nur noch die Produktinformationen und die Produktkategorie.
